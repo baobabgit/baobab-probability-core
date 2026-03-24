@@ -17,13 +17,17 @@ class TestUrnDrawSimulator:
         cfg = SimulationConfig(20, 5)
         a = UrnDrawSimulator(cfg)
         b = UrnDrawSimulator(cfg)
-        assert a.run_with_replacement(10, 3, 4).data == b.run_with_replacement(10, 3, 4).data
+        ra, rb = a.run_with_replacement(10, 3, 4), b.run_with_replacement(10, 3, 4)
+        assert ra.urn_successes_per_iteration == rb.urn_successes_per_iteration
+        assert ra.data == rb.data
 
     def test_without_replacement(self) -> None:
         """Tirage sans remise borné."""
         r = UrnDrawSimulator(SimulationConfig(5, 1)).run_without_replacement(10, 4, 3)
-        assert len(r.data["successes_per_trial"]) == 5
-        assert all(0 <= x <= 3 for x in r.data["successes_per_trial"])
+        per = r.urn_successes_per_iteration or ()
+        assert len(per) == 5
+        assert all(0 <= x <= 3 for x in per)
+        assert list(per) == r.data["successes_per_trial"]
 
     def test_invalid_population(self) -> None:
         """Population nulle."""
