@@ -39,6 +39,7 @@ dev = [
     "pylint>=3.0",
     "mypy>=1.8",
     "flake8>=7.0",
+    "Flake8-pyproject>=1.2.0",
     "bandit>=1.7",
 ]
 
@@ -91,6 +92,12 @@ disable = [
     "too-few-public-methods",
     "duplicate-code",
 ]
+
+[tool.flake8]
+# Flake8 ne lit pas nativement pyproject.toml ; le plugin Flake8-pyproject charge cette section.
+max-line-length = 100
+extend-ignore = "E203, W503"
+exclude = ".git,.mypy_cache,.pytest_cache,docs/tests/coverage"
 
 [tool.bandit]
 exclude_dirs = ["tests"]
