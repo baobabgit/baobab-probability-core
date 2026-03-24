@@ -1,0 +1,15 @@
+# Changelog
+
+## [1.0.0] — 2026-03-24
+
+### Ajouté
+
+- Première version publiable du noyau `baobab-probability-core`.
+- Combinatoire : factorielle, permutations, arrangements, combinaisons avec validations strictes.
+- Probabilité : événements, espaces finis, complément / union / intersection, conditionnement, Bayes, indépendance (tolérance flottante).
+- Distributions discrètes : Bernoulli, binomiale, géométrique (succès au k-ième essai), hypergéométrique, Poisson.
+- Simulation : `SimulationConfig`, `RandomGenerator`, `SimulationResult`, simulateurs Bernoulli, binomiale, dé, urne (avec / sans remise).
+- Statistiques empiriques : `DistributionObservation`, fréquences, moments, descriptifs.
+- Comparaison : `ProbabilityComparisonResult`, `DistributionComparisonResult`, `TheoreticalObservationComparator`, `GoodnessOfFitCalculator` (χ² de Pearson, distance en variation totale).
+- Exceptions métier hiérarchisées sous `BaobabProbabilityCoreException`.
+- Configuration centralisée dans `pyproject.toml`, tests avec couverture ≥ 90 %, rapports HTML/XML sous `docs/tests/coverage/`.
