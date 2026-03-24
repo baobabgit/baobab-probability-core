@@ -1,0 +1,39 @@
+# Contrôles qualité et tests (alignés sur docs/00_dev_constraints.md et pyproject.toml).
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install package and dev dependencies
+        run: pip install -e ".[dev]"
+
+      - name: black
+        run: black --check src tests
+
+      - name: flake8
+        run: flake8 src tests
+
+      - name: pylint
+        run: pylint src/baobab_probability_core
+
+      - name: mypy
+        run: mypy src/baobab_probability_core
+
+      - name: bandit
+        run: bandit -r src/baobab_probability_core
+
+      - name: pytest (coverage gate via pyproject.toml)
+        run: pytest
