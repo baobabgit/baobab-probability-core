@@ -23,6 +23,7 @@ class BinomialSimulator:
 
         :param trials: Nombre d'essais ``n`` par itération.
         :param success_probability: Probabilité de succès ``p``.
+        :returns: ``trial_outcomes`` (succès par itération) ; clé legacy ``data['values']``.
         """
         self._int_val.validate_non_negative_int(trials, "n")
         self._prob_val.validate_closed_unit_interval(success_probability)
@@ -34,4 +35,4 @@ class BinomialSimulator:
                 if gen.rng.random() < success_probability:
                     s += 1
             values.append(s)
-        return SimulationResult(data={"values": values})
+        return SimulationResult(trial_outcomes=tuple(values))

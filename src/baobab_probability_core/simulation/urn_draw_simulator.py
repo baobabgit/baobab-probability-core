@@ -25,7 +25,9 @@ class UrnDrawSimulator:
 
         Le nombre de succès suit ``B(n, K/N)``.
 
-        :returns: ``data['successes_per_trial']`` liste de longueur ``iterations``.
+        :returns: ``urn_successes_per_iteration`` (longueur ``iterations``) ;
+            :attr:`~baobab_probability_core.simulation.simulation_result.SimulationResult.data`
+            conserve ``successes_per_trial``.
         """
         self._validate_population(population_size, success_balls)
         if sample_size < 0:
@@ -39,7 +41,7 @@ class UrnDrawSimulator:
                 if gen.rng.random() < p:
                     succ += 1
             results.append(succ)
-        return SimulationResult(data={"successes_per_trial": results})
+        return SimulationResult(urn_successes_per_iteration=tuple(results))
 
     def run_without_replacement(
         self,
@@ -49,7 +51,8 @@ class UrnDrawSimulator:
     ) -> SimulationResult:
         """Tirages sans remise : hypergéométrique par itération.
 
-        :returns: ``data['successes_per_trial']``.
+        :returns: ``urn_successes_per_iteration`` ; équivalent historique :
+            ``data['successes_per_trial']``.
         """
         self._validate_population(population_size, success_balls)
         self._validate_sample_without_replacement(population_size, sample_size)
@@ -61,7 +64,7 @@ class UrnDrawSimulator:
             gen.rng.shuffle(urn)
             drawn: int = sum(urn[:sample_size])
             results.append(drawn)
-        return SimulationResult(data={"successes_per_trial": results})
+        return SimulationResult(urn_successes_per_iteration=tuple(results))
 
     def _validate_population(self, population_size: int, success_balls: int) -> None:
         if population_size < 1:

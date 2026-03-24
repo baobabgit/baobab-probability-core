@@ -21,7 +21,9 @@ class BernoulliSimulator:
         """Simule ``iterations`` tirages de Bernoulli.
 
         :param success_probability: Probabilité de succès ``p``.
-        :returns: ``data['values']`` liste de 0/1, ``data['successes']`` total.
+        :returns: ``trial_outcomes`` (0/1 par itération), ``bernoulli_success_total`` ;
+            :attr:`~baobab_probability_core.simulation.simulation_result.SimulationResult.data`
+            expose encore ``values`` / ``successes``.
         """
         self._validator.validate_closed_unit_interval(success_probability)
         gen: RandomGenerator = RandomGenerator(self._config.seed)
@@ -31,8 +33,6 @@ class BernoulliSimulator:
             values.append(1 if u < success_probability else 0)
         successes: int = sum(values)
         return SimulationResult(
-            data={
-                "values": values,
-                "successes": successes,
-            }
+            trial_outcomes=tuple(values),
+            bernoulli_success_total=successes,
         )

@@ -21,7 +21,8 @@ class DiceRollSimulator:
         """Lance un dé à ``sides`` faces ``iterations`` fois.
 
         :param sides: Nombre de faces (au moins 2).
-        :returns: ``data['counts_by_face']`` effectifs par valeur de face.
+        :returns: ``face_counts`` et ``face_counts_sorted`` ; clé legacy
+            ``data['counts_by_face']``.
         """
         if sides < 2:
             raise UnsupportedExperimentException(
@@ -32,4 +33,6 @@ class DiceRollSimulator:
         for _ in range(self._config.iterations):
             face: int = gen.rng.randint(1, sides)
             counter[face] += 1
-        return SimulationResult(data={"counts_by_face": dict(counter)})
+        return SimulationResult(
+            face_counts_sorted=tuple(sorted(counter.items())),
+        )
