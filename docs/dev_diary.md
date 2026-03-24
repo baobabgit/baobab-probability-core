@@ -4,6 +4,16 @@ Les entrées les plus récentes en premier.
 
 ---
 
+## 2026-03-24 — CI GitHub Actions : `push` et `pull_request`
+
+**Modifications :** [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) : déclencheurs **`push`** et **`pull_request`** (remplace le déclenchement limité aux tags). Les étapes restent inchangées : Python **3.11**, `pip install -e ".[dev]"`, black, flake8, pylint, mypy, bandit, pytest avec **seuil de couverture** appliqué comme en local via `pyproject.toml`. Mise à jour de `README.md` (section **Intégration continue**), `docs/release_validation.md` (déclencheurs et propagation du fail de couverture).
+
+**Buts :** Exécuter automatiquement tous les quality gates sur chaque push et chaque PR, sans complexifier le workflow.
+
+**Impacts :** Les contributions voient l’état CI avant merge ; le badge README suit la branche par défaut.
+
+---
+
 ## 2026-03-24 — métadonnées release stable **1.0.0** (`pyproject.toml`)
 
 **Modifications :** Vérification sur `main` : version **1.0.0**, classifier **Development Status :: 5 - Production/Stable**, **Homepage** déjà `https://github.com/baobabgit/baobab-probability-core`. Complément **PEP 621** dans `[project.urls]` : `Repository` (même origine) et `Changelog` (fichier `CHANGELOG.md` sur la branche par défaut) pour la page projet PyPI / découvrabilité. Aucun changement de code métier ; `README.md` et `CHANGELOG.md` restent alignés (section Version et entrée 1.0.0).
@@ -28,9 +38,9 @@ Les entrées les plus récentes en premier.
 
 **Modifications :** Ajout de `docs/release_validation.md` : tableau des quality gates (black, flake8, pylint, mypy, bandit, pytest / couverture ≥ 90 %), référence au workflow [`.github/workflows/ci.yml`](../.github/workflows/ci.yml), run CI réussi sur tag `v1.0.0`, et compte-rendu d’une exécution locale. Badge **CI** en tête du `README.md`, lien vers ce document depuis la section Qualité, arborescence `docs/` mise à jour.
 
-**Buts :** Démontrer clairement avant GO release que les exigences de `docs/00_dev_constraints.md` sont vérifiables et vérifiées ; alignement documentaire avec la CI déclenchée par les tags.
+**Buts :** Démontrer clairement avant GO release que les exigences de `docs/00_dev_constraints.md` sont vérifiables et vérifiées ; alignement documentaire avec la CI GitHub Actions.
 
-**Impacts :** Aucun changement de code métier ; les contributeurs ont en un seul endroit la liste des commandes et le lien vers la preuve CI.
+**Impacts :** Aucun changement de code métier ; les contributeurs ont en un seul endroit la liste des commandes et le lien vers la preuve CI (voir entrée ultérieure sur les déclencheurs `push` / `pull_request`).
 
 ---
 
