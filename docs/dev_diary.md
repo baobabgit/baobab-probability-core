@@ -4,6 +4,16 @@ Les entrées les plus récentes en premier.
 
 ---
 
+## 2026-03-24 — préparation publication **v1.0.0** (tag + release GitHub)
+
+**Modifications :** `CHANGELOG.md` (section **[1.0.0]** : CI `push`/`pull_request`, URLs packaging, `release_validation` / badge). `docs/releases/v1.0.0.md` aligné (qualité + liens CI, suppression de la mention erronée « push de tags uniquement »). Aucun changement de code métier.
+
+**Buts :** Cohérence `pyproject.toml` / changelog / notes de release avant création du tag **`v1.0.0`** et publication sur GitHub Releases.
+
+**Impacts :** Les notes publiées avec la release reflètent l’état réel du dépôt ; le merge sur `main` est suivi du tag annoté et de `gh release create`.
+
+---
+
 ## 2026-03-24 — relecture preuve validation / CI `main` à jour
 
 **Modifications :** `docs/release_validation.md` : référence CI principale remplacée par le dernier run **réussi** sur `main` après la fusion de la PR de validation (run **23508172802**) ; bloc historique reformulé sans mention d’un tag Git actif (alignement avec la suppression du tag `v1.0.0` côté dépôt). Quality gates relancés localement : tous verts, **115** tests, couverture **~99,75 %** (≥ 90 %). Badge CI et conclusion GO inchangés dans le fond.
