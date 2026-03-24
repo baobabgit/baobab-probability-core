@@ -4,6 +4,16 @@ Les entrées les plus récentes en premier.
 
 ---
 
+## 2026-03-24 — CI déclenchée par tags uniquement
+
+**Modifications :** `.github/workflows/ci.yml` : déclencheur `push` limité aux **tags** (plus de `pull_request`). Mise à jour de la section **Intégration continue** dans `README.md`.
+
+**Buts :** Lancer les quality gates à la publication / étiquetage plutôt qu’à chaque push ou PR.
+
+**Impacts :** Les développeurs doivent lancer les contrôles en local avant merge ; la CI ne signale plus automatiquement les régressions sur les branches sans tag.
+
+---
+
 ## 2026-03-24 — CI GitHub Actions
 
 **Modifications :** Ajout de `.github/workflows/ci.yml` déclenché sur `push` et `pull_request` : Python 3.11, `pip install -e ".[dev]"`, enchaînement `black --check`, `flake8`, `pylint`, `mypy`, `bandit`, `pytest` (seuil de couverture inchangé, via `pyproject.toml`). Section **Intégration continue** dans `README.md`.
