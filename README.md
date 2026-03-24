@@ -99,6 +99,10 @@ pytest
 
 Couverture minimale attendue : **90 %** (voir `pyproject.toml`).
 
+## Intégration continue
+
+Sur chaque **push** et chaque **pull request** vers ce dépôt, le workflow [`.github/workflows/ci.yml`](.github/workflows/ci.yml) exécute : installation Python **3.11**, `pip install -e ".[dev]"`, puis `black --check`, `flake8`, `pylint`, `mypy`, `bandit` et `pytest`. La couverture est imposée par `pytest` (seuil **90 %** défini dans `pyproject.toml`) : le job échoue si le seuil n’est pas atteint.
+
 ## Contribution
 
 - Respecter **PEP 8**, typage strict, **une classe par fichier** côté production.
