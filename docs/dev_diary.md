@@ -4,6 +4,16 @@ Les entrées les plus récentes en premier.
 
 ---
 
+## 2026-03-24 — alignement métadonnées release stable
+
+**Modifications :** `pyproject.toml` : classifier `Development Status :: 5 - Production/Stable` (remplace la bêta), `project.urls.Homepage` → `https://github.com/baobabgit/baobab-probability-core`. `README.md` (section Version : statut stable + lien dépôt), `CHANGELOG.md` (sous-section *Modifié* pour la version 1.0.0).
+
+**Buts :** Cohérence entre la version SemVer 1.0.0 annoncée et les métadonnées présentées aux utilisateurs / PyPI ; URL du dépôt alignée sur l’organisation GitHub réelle.
+
+**Impacts :** Aucun changement de code applicatif ; publication PyPI future reflétera un produit stable et le bon lien de projet.
+
+---
+
 ## 2026-03-24 — ~23:20 (UTC+1)
 
 **Modifications :** Implémentation complète de la v1 selon le cahier des charges : arborescence `src/baobab_probability_core` (exceptions, validateurs, combinatoire, probabilité sur espaces finis, distributions discrètes, simulation, statistiques empiriques, comparaison théorie/observation, utilitaires flottants), `pyproject.toml` (métadonnées SemVer 1.0.0, outillage black/mypy/pytest-cov/pylint/flake8/bandit), suite de tests miroir avec couverture ≥ 90 %, `README.md`, `CHANGELOG.md`, configuration `flake8`, exclusion bandit justifiée pour `random.Random` (usage statistique non cryptographique).
