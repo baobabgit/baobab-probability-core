@@ -1,26 +1,28 @@
 """Espace probabiliste fini sur un univers dénombrable."""
 
 from collections.abc import Mapping
+from typing import Generic
 
 from baobab_probability_core.constants.mathematical_constants import DEFAULT_FLOAT_TOLERANCE
 from baobab_probability_core.exceptions.invalid_probability_value_exception import (
     InvalidProbabilityValueException,
 )
-from baobab_probability_core.probability.event import Event
+from baobab_probability_core.probability.event import Event, OutcomeT
 from baobab_probability_core.utils.floating_point_comparator import FloatingPointComparator
 
 
-class FiniteProbabilitySpace:
-    """Univers fini avec probabilités sur chaque issue."""
+class FiniteProbabilitySpace(Generic[OutcomeT]):
+    """Univers fini avec probabilités sur chaque issue (issues : type hashable)."""
 
     def __init__(
         self,
-        outcome_probabilities: Mapping[str, float],
+        outcome_probabilities: Mapping[OutcomeT, float],
         tolerance: float | None = None,
     ) -> None:
         """Construit l'espace.
 
-        :param outcome_probabilities: Issue → probabilité.
+        :param outcome_probabilities: Issue → probabilité. Clés hashables
+            (ex. ``str``, ``int``, ``tuple``, :class:`enum.Enum`).
         :param tolerance: Tolérance sur la somme ; défaut : constante globale.
         :raises InvalidProbabilityValueException: si somme ≠ 1 ou probabilités invalides.
         """
@@ -40,9 +42,9 @@ class FiniteProbabilitySpace:
             raise InvalidProbabilityValueException(
                 f"La somme des probabilités doit valoir 1 (somme = {sum(probs)})."
             )
-        self._outcomes: dict[str, float] = dict(outcome_probabilities)
+        self._outcomes: dict[OutcomeT, float] = dict(outcome_probabilities)
 
-    def probability_of_outcome(self, outcome: str) -> float:
+    def probability_of_outcome(self, outcome: OutcomeT) -> float:
         """Probabilité d'une issue élémentaire.
 
         :raises InvalidProbabilityValueException: si l'issue est absente.
@@ -51,7 +53,7 @@ class FiniteProbabilitySpace:
             raise InvalidProbabilityValueException(f"Issue inconnue : {outcome!r}.")
         return self._outcomes[outcome]
 
-    def probability_of_event(self, event: Event) -> float:
+    def probability_of_event(self, event: Event[OutcomeT]) -> float:
         """Probabilité d'un événement (somme des issues)."""
         total: float = 0.0
         for o in event.outcomes:
