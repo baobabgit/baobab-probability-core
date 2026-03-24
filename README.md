@@ -122,7 +122,7 @@ Les réglages **flake8** sont dans `pyproject.toml` (`[tool.flake8]`). Comme fla
 
 ## Intégration continue
 
-Le workflow [`.github/workflows/ci.yml`](.github/workflows/ci.yml) (**CI**) se déclenche sur chaque **`push`** et sur les **`pull_request`** vers le dépôt. Il installe **Python 3.11**, exécute `pip install -e ".[dev]"`, puis `black --check`, `flake8`, `pylint`, `mypy`, `bandit` et `pytest`. La couverture est imposée par `pytest` via `--cov-fail-under=90` dans `pyproject.toml` : un sous-seuil ou des tests en échec font échouer le job. Le badge en tête du README reflète l’état du workflow sur la branche par défaut.
+Le workflow [`.github/workflows/ci.yml`](.github/workflows/ci.yml) (**CI**) se déclenche sur chaque **`push`** et sur les **`pull_request`** vers le dépôt. Il installe **Python 3.11**, exécute `pip install -e ".[dev]"`, puis `black --check`, `flake8`, `pylint`, `mypy`, `bandit` et `pytest`. La couverture est imposée par `pytest` via `--cov-fail-under=90` dans `pyproject.toml` : un sous-seuil ou des tests en échec font échouer le job. Le badge en tête du README reflète l’état du workflow sur la branche par défaut. Synthèse et **conclusion de validation technique** (GO release au sens des contrôles automatisés) : [`docs/release_validation.md`](docs/release_validation.md).
 
 ## Contribution
 
