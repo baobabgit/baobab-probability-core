@@ -4,6 +4,16 @@ Les entrées les plus récentes en premier.
 
 ---
 
+## 2026-03-24 — validation technique finale / GO release stable (`docs/release_validation.md`)
+
+**Modifications :** Enrichissement de `docs/release_validation.md` : critères de réussite explicites, vérification de la couverture (90 % imposé, ~99,75 % constaté), preuve locale à jour (115 tests, enchaînement des six contrôles), référence CI **récente** sur `main` (run **23508029730**) en plus de la référence historique tag `v1.0.0`, section **Conclusion de validation technique** (GO au sens des gates automatisés). Lien depuis `README.md` (section Intégration continue). Badge CI déjà présent en tête du README.
+
+**Buts :** Offrir une preuve **lisible et consolidée** que le projet est prêt pour une release stable du point de vue qualité, sans toucher au code métier.
+
+**Impacts :** Les lecteurs externes et internes disposent d’une conclusion explicite ; maintien du document inchangé en procédure (section « Maintenir cette preuve »).
+
+---
+
 ## 2026-03-24 — CI GitHub Actions : `push` et `pull_request`
 
 **Modifications :** [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) : déclencheurs **`push`** et **`pull_request`** (remplace le déclenchement limité aux tags). Les étapes restent inchangées : Python **3.11**, `pip install -e ".[dev]"`, black, flake8, pylint, mypy, bandit, pytest avec **seuil de couverture** appliqué comme en local via `pyproject.toml`. Mise à jour de `README.md` (section **Intégration continue**), `docs/release_validation.md` (déclencheurs et propagation du fail de couverture).

@@ -1,16 +1,16 @@
 # Validation technique avant release (quality gates)
 
-Ce document enregistre **quels contrôles** doivent passer, **comment** ils sont exécutés dans le dépôt, et une **preuve de réussite** (locale + CI) pour le GO release.
+Ce document enregistre **quels contrôles** doivent passer, **comment** ils sont exécutés dans le dépôt, une **preuve** (locale + CI), et la **conclusion** pour un GO release stable.
 
 ---
 
 ## Date de validation documentaire
 
-**2026-03-24** — contenu aligné sur l’exécution locale des commandes ci-dessous et sur le dernier run CI du workflow associé au tag `v1.0.0`.
+**2026-03-24** — actualisation après exécution locale complète des six contrôles (voir § Preuve locale) et prise en compte du workflow **CI** sur `push` et `pull_request` ([`.github/workflows/ci.yml`](../.github/workflows/ci.yml)), aligné sur `docs/00_dev_constraints.md`.
 
 ---
 
-## Liste des contrôles et conditions de réussite
+## Liste des contrôles et critères de réussite
 
 | Contrôle | Commande | Réussite attendue |
 |----------|----------|-------------------|
@@ -28,18 +28,17 @@ Référence normative : [`docs/00_dev_constraints.md`](00_dev_constraints.md).
 ## Seuil de couverture
 
 - **Minimum imposé : 90 %** (`[tool.pytest.ini_options] addopts` → `--cov-fail-under=90`).
-- Les rapports HTML/XML sont générés sous `docs/tests/coverage/` (fichiers générés, non versionnés de façon obligatoire selon `.gitignore` du projet).
+- **Vérification explicite :** en l’état du dépôt à la date ci-dessus, la couverture totale rapportée par `pytest` est **d’environ 99,75 %** (au-dessus du plancher).
+- Les rapports HTML/XML sont générés sous `docs/tests/coverage/` (fichiers générés ; non versionnés de façon obligatoire selon `.gitignore` du projet).
 
 ---
 
 ## Preuve locale (référence)
 
-Exécution unique sur l’arbre de sources à jour, environnement de développement avec `pip install -e ".[dev]"` :
+Enchaînement **black → flake8 → pylint → mypy → bandit → pytest** après `pip install -e ".[dev]"` sur l’arbre à jour :
 
-- **Python** : 3.13.12 (Windows).
-- **Résultat** : les six commandes ci-dessus se terminent avec **code retour 0** ; **115** tests collectés, tous verts ; couverture totale rapportée **≈ 99,75 %** (≥ 90 %).
-
-> Pour une preuve strictement alignée sur la CI, ré-exécuter les mêmes commandes sous **Python 3.11** (version du workflow GitHub Actions).
+- **Python** : 3.13.12 (Windows) — la CI GitHub utilise **3.11** ; les commandes sont les mêmes.
+- **Résultat** : **code retour 0** pour chaque étape ; **115** tests, tous verts ; couverture **≥ 90 %** (≈ **99,75 %**).
 
 ---
 
@@ -47,13 +46,32 @@ Exécution unique sur l’arbre de sources à jour, environnement de développem
 
 - **Fichier workflow** : [`.github/workflows/ci.yml`](../.github/workflows/ci.yml)
 - **Nom du workflow** : **CI**
-- **Déclencheurs** : **`push`** (toutes branches) et **`pull_request`**.
-- **Job** : `quality` sur `ubuntu-latest`, Python **3.11**, mêmes étapes que le tableau ci-dessus (black, flake8, pylint, mypy, bandit, pytest). Une couverture **strictement inférieure au seuil 90 %** fait échouer le job : `pytest` applique `--cov-fail-under=90` depuis `pyproject.toml`.
+- **Déclencheurs** : **`push`** et **`pull_request`**.
+- **Job** : `quality` sur `ubuntu-latest`, Python **3.11**, mêmes étapes que le tableau ci-dessus. Une couverture **strictement inférieure au seuil 90 %** ou un test en échec fait échouer le job (`pytest` + `pyproject.toml`).
 
-**Référence de run historique (tag `v1.0.0`, succès, ancien déclencheur tags uniquement)** :
+**Référence de run CI (branche `main`, succès, merge intégrant la CI sur PR)** :
+
+- Run ID : **23508029730**
+- URL : https://github.com/baobabgit/baobab-probability-core/actions/runs/23508029730
+
+**Référence historique (tag `v1.0.0`, ancien modèle de déclenchement)** :
 
 - Run ID : **23507200123**
 - URL : https://github.com/baobabgit/baobab-probability-core/actions/runs/23507200123
+
+Le dépôt expose un **badge CI** dans [`README.md`](../README.md) (lien vers la liste des exécutions du workflow).
+
+---
+
+## Conclusion de validation technique
+
+Sous réserve que l’arborescence et les dépendances correspondent à cette documentation (notamment `pip install -e ".[dev]"` pour les outils) :
+
+1. Les **quality gates** listés sont **exhaustifs** par rapport aux attentes usuelles du projet (formatage, lint, typage, sécurité, tests, couverture).
+2. Le **seuil de couverture 90 %** est **atteint et dépassé** ; il est **appliqué en CI** comme en local.
+3. Le workflow **CI** sur GitHub Actions **réexécute les mêmes contrôleurs** que ce tableau.
+
+**Le projet est donc considéré comme techniquement prêt pour une release stable** au sens de ces critères automatisés. Tout GO fonctionnel ou produit reste distinct (p.ex. validation métier, publication PyPI, communication).
 
 ---
 
@@ -62,5 +80,5 @@ Exécution unique sur l’arbre de sources à jour, environnement de développem
 Avant une release ou un GO formel :
 
 1. Synchroniser `main`, installer `".[dev]"`.
-2. Enchaîner les commandes du tableau (ou s’appuyer sur le run CI après push ou sur la CI de la **pull_request**).
-3. Mettre à jour **la date** et, si nécessaire, **l’URL du dernier run CI** dans ce fichier via une PR dédiée.
+2. Enchaîner les commandes du tableau (ou s’appuyer sur le run CI après **push** ou sur la CI de la **pull_request**).
+3. Mettre à jour **la date**, **la preuve locale** si les chiffres changent, et **l’URL du dernier run CI** sur `main` dans ce fichier via une PR dédiée.
