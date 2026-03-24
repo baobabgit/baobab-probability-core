@@ -4,6 +4,16 @@ Les entrées les plus récentes en premier.
 
 ---
 
+## 2026-03-24 — métadonnées release stable **1.0.0** (`pyproject.toml`)
+
+**Modifications :** Vérification sur `main` : version **1.0.0**, classifier **Development Status :: 5 - Production/Stable**, **Homepage** déjà `https://github.com/baobabgit/baobab-probability-core`. Complément **PEP 621** dans `[project.urls]` : `Repository` (même origine) et `Changelog` (fichier `CHANGELOG.md` sur la branche par défaut) pour la page projet PyPI / découvrabilité. Aucun changement de code métier ; `README.md` et `CHANGELOG.md` restent alignés (section Version et entrée 1.0.0).
+
+**Buts :** Finaliser l’alignement packaging d’une release stable sans rouvrir la version SemVer.
+
+**Impacts :** Les installations futures depuis PyPI afficheront les liens fichier historique et dépôt ; comportement runtime inchangé.
+
+---
+
 ## 2026-03-24 — vérification : contraintes déjà en `docs/00_dev_constraints.md`
 
 **Modifications :** Entrée de journal uniquement (pas de nouveau fichier ni renommage). Vérification sur `main` : `docs/00_dev_constraints.py` **absent** ; le document canonique est **`docs/00_dev_constraints.md`**. Les liens vers les contraintes dans `README.md`, `docs/01_specifications.md`, `.github/workflows/ci.yml` et `docs/release_validation.md` ciblent le `.md`. La seule occurrence restante de l’ancien nom `.py` est l’entrée historique ci-dessous (« renommage … »).

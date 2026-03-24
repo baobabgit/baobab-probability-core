@@ -24,6 +24,8 @@ classifiers = [
 
 [project.urls]
 Homepage = "https://github.com/baobabgit/baobab-probability-core"
+Repository = "https://github.com/baobabgit/baobab-probability-core"
+Changelog = "https://github.com/baobabgit/baobab-probability-core/blob/main/CHANGELOG.md"
 
 [tool.setuptools.packages.find]
 where = ["src"]
