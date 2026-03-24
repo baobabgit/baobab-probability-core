@@ -1,5 +1,7 @@
 # baobab-probability-core
 
+[![CI](https://github.com/baobabgit/baobab-probability-core/actions/workflows/ci.yml/badge.svg)](https://github.com/baobabgit/baobab-probability-core/actions/workflows/ci.yml)
+
 Bibliothèque Python pour **probabilités discrètes**, **simulations reproductibles** et **comparaison théorie / observations**. Elle constitue un noyau métier réutilisable (CLI, API, reporting, moteurs de simulation) sans dépendances scientifiques obligatoires en production.
 
 ## Objectifs
@@ -94,9 +96,11 @@ src/baobab_probability_core/
 └── validators/         # Validation des entrées
 tests/baobab_probability_core/   # Tests miroir (une classe → un module de tests)
 docs/
-├── 00_dev_constraints.md  # Contraintes de développement (Markdown)
-├── dev_diary.md             # Journal de développement
-└── tests/coverage/          # Rapports de couverture (générés)
+├── 00_dev_constraints.md   # Contraintes de développement (Markdown)
+├── dev_diary.md            # Journal de développement
+├── release_validation.md   # Preuve des quality gates et couverture
+├── releases/               # Notes par version (ex. GitHub)
+└── tests/coverage/         # Rapports de couverture (générés)
 ```
 
 ## Qualité
@@ -111,6 +115,8 @@ pytest
 ```
 
 Couverture minimale attendue : **90 %** (voir `pyproject.toml`).
+
+Synthèse des contrôles et preuve de réussite (local + lien CI) : [`docs/release_validation.md`](docs/release_validation.md).
 
 Les réglages **flake8** sont dans `pyproject.toml` (`[tool.flake8]`). Comme flake8 ne charge pas ce fichier nativement, la dépendance de développement **Flake8-pyproject** applique cette configuration lorsque vous exécutez `flake8` après `pip install -e ".[dev]"`.
 
