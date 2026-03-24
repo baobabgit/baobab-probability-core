@@ -4,6 +4,16 @@ Les entrées les plus récentes en premier.
 
 ---
 
+## 2026-03-24 — relecture preuve validation / CI `main` à jour
+
+**Modifications :** `docs/release_validation.md` : référence CI principale remplacée par le dernier run **réussi** sur `main` après la fusion de la PR de validation (run **23508172802**) ; bloc historique reformulé sans mention d’un tag Git actif (alignement avec la suppression du tag `v1.0.0` côté dépôt). Quality gates relancés localement : tous verts, **115** tests, couverture **~99,75 %** (≥ 90 %). Badge CI et conclusion GO inchangés dans le fond.
+
+**Buts :** Éviter toute **documentation trompeuse** (tag inexistant) tout en conservant une preuve CI vérifiable.
+
+**Impacts :** Aucun changement de code métier ; lecteur reçoit une URL de run encore pertinente pour `main`.
+
+---
+
 ## 2026-03-24 — validation technique finale / GO release stable (`docs/release_validation.md`)
 
 **Modifications :** Enrichissement de `docs/release_validation.md` : critères de réussite explicites, vérification de la couverture (90 % imposé, ~99,75 % constaté), preuve locale à jour (115 tests, enchaînement des six contrôles), référence CI **récente** sur `main` (run **23508029730**) en plus de la référence historique tag `v1.0.0`, section **Conclusion de validation technique** (GO au sens des gates automatisés). Lien depuis `README.md` (section Intégration continue). Badge CI déjà présent en tête du README.
