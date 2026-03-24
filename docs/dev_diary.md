@@ -4,6 +4,16 @@ Les entrées les plus récentes en premier.
 
 ---
 
+## 2026-03-24 — vérification : contraintes déjà en `docs/00_dev_constraints.md`
+
+**Modifications :** Entrée de journal uniquement (pas de nouveau fichier ni renommage). Vérification sur `main` : `docs/00_dev_constraints.py` **absent** ; le document canonique est **`docs/00_dev_constraints.md`**. Les liens vers les contraintes dans `README.md`, `docs/01_specifications.md`, `.github/workflows/ci.yml` et `docs/release_validation.md` ciblent le `.md`. La seule occurrence restante de l’ancien nom `.py` est l’entrée historique ci-dessous (« renommage … »).
+
+**Buts :** Répondre à une demande d’audit postérieure au renommage et documenter qu’aucune action corrective n’est nécessaire sur un dépôt à jour.
+
+**Impacts :** Traçabilité pour les contributeurs ; pas de changement de code métier ni de régression de références.
+
+---
+
 ## 2026-03-24 — preuve de validation technique (`docs/release_validation.md`)
 
 **Modifications :** Ajout de `docs/release_validation.md` : tableau des quality gates (black, flake8, pylint, mypy, bandit, pytest / couverture ≥ 90 %), référence au workflow [`.github/workflows/ci.yml`](../.github/workflows/ci.yml), run CI réussi sur tag `v1.0.0`, et compte-rendu d’une exécution locale. Badge **CI** en tête du `README.md`, lien vers ce document depuis la section Qualité, arborescence `docs/` mise à jour.
