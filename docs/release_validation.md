@@ -47,10 +47,10 @@ Exécution unique sur l’arbre de sources à jour, environnement de développem
 
 - **Fichier workflow** : [`.github/workflows/ci.yml`](../.github/workflows/ci.yml)
 - **Nom du workflow** : **CI**
-- **Déclencheur** : push d’un **tag** (`v*`), pas chaque commit sur `main`.
-- **Job** : `quality` sur `ubuntu-latest`, Python **3.11**, mêmes étapes que le tableau ci-dessus (black, flake8, pylint, mypy, bandit, pytest).
+- **Déclencheurs** : **`push`** (toutes branches) et **`pull_request`**.
+- **Job** : `quality` sur `ubuntu-latest`, Python **3.11**, mêmes étapes que le tableau ci-dessus (black, flake8, pylint, mypy, bandit, pytest). Une couverture **strictement inférieure au seuil 90 %** fait échouer le job : `pytest` applique `--cov-fail-under=90` depuis `pyproject.toml`.
 
-**Référence de run vérifiée (tag `v1.0.0`, succès)** :
+**Référence de run historique (tag `v1.0.0`, succès, ancien déclencheur tags uniquement)** :
 
 - Run ID : **23507200123**
 - URL : https://github.com/baobabgit/baobab-probability-core/actions/runs/23507200123
@@ -62,5 +62,5 @@ Exécution unique sur l’arbre de sources à jour, environnement de développem
 Avant une release ou un GO formel :
 
 1. Synchroniser `main`, installer `".[dev]"`.
-2. Enchaîner les commandes du tableau (ou s’appuyer sur le run CI après push du tag).
+2. Enchaîner les commandes du tableau (ou s’appuyer sur le run CI après push ou sur la CI de la **pull_request**).
 3. Mettre à jour **la date** et, si nécessaire, **l’URL du dernier run CI** dans ce fichier via une PR dédiée.
