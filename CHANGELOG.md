@@ -1,5 +1,11 @@
 # Changelog
 
+## [Non publié]
+
+### Modifié
+
+- **Simulation** : `SimulationResult` est une `dataclass` typée (tuples entiers, effectifs de dé triés par face) ; la propriété `data` reprend les clés `values`, `successes`, `counts_by_face`, `successes_per_trial`. La construction `SimulationResult(data=...)` n’est plus prise en charge.
+
 ## [1.0.0] — 2026-03-24
 
 ### Modifié

@@ -48,6 +48,8 @@ from baobab_probability_core.simulation.bernoulli_simulator import BernoulliSimu
 config = SimulationConfig(iterations=1000, seed=42)
 simulator = BernoulliSimulator(config=config)
 result = simulator.run(success_probability=0.3)
+# Contrat typé privilégié : result.trial_outcomes, result.bernoulli_success_total
+# Compatibilité : result.data["values"], result.data["successes"]
 ```
 
 ### Comparaison probabilité / fréquence

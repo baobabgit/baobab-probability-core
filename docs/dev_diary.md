@@ -4,6 +4,16 @@ Les entrées les plus récentes en premier.
 
 ---
 
+## 2026-03-24 — `SimulationResult` typé (simulation)
+
+**Modifications :** `SimulationResult` est une ``dataclass`` figée avec champs explicites (`trial_outcomes`, `bernoulli_success_total`, `face_counts_sorted`, `urn_successes_per_iteration`, propriété `face_counts`). La propriété `data` conserve les clés historiques (`values`, `successes`, `counts_by_face`, `successes_per_trial`) pour le code existant. Simulateurs Bernoulli, binomiale, dé, urne mis à jour ; tests et exemples documentés.
+
+**Buts :** Contrat public plus strict pour le noyau métier tout en gardant une API simple ; typage statique plus informatif que `dict[str, Any]` seul.
+
+**Impacts :** Construction directe `SimulationResult(data={...})` n’est plus supportée ; les appelants doivent utiliser les champs typés ou la vue `data` en lecture seule. Les simulateurs du paquet restent le chemin principal.
+
+---
+
 ## 2026-03-24 — flake8 dans pyproject.toml
 
 **Modifications :** Configuration flake8 déplacée de `.flake8` vers `[tool.flake8]` dans `pyproject.toml`, avec ajout de la dépendance de développement **Flake8-pyproject** (plugin officiellement utilisé pour lire `pyproject.toml`, car flake8 seul ne le supporte pas). Documentation dans `docs/00_dev_constraints.md` et `README.md`.
