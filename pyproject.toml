@@ -12,7 +12,7 @@ license = { text = "MIT" }
 authors = [{ name = "Baobab" }]
 keywords = ["probability", "statistics", "simulation", "discrete"]
 classifiers = [
-    "Development Status :: 4 - Beta",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
@@ -23,7 +23,7 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/baobab/baobab-probability-core"
+Homepage = "https://github.com/baobabgit/baobab-probability-core"
 
 [tool.setuptools.packages.find]
 where = ["src"]
