@@ -4,6 +4,16 @@ Les entrées les plus récentes en premier.
 
 ---
 
+## 2026-03-24 — espaces finis génériques (`FiniteProbabilitySpace`, `Event`)
+
+**Modifications :** Introduction de `OutcomeT` (:class:`typing.TypeVar`, borne :class:`collections.abc.Hashable`). `Event` et `FiniteProbabilitySpace` deviennent ``Generic[OutcomeT]`` ; stockage interne ``dict[OutcomeT, float]``. Les services `ProbabilityCalculator`, `ConditionalProbabilityCalculator` et `IndependenceChecker` annotent espace et événements avec le même `OutcomeT`. Export de `OutcomeT` depuis `baobab_probability_core.probability`. Tests : `str`, `int`, `tuple`, `Enum` ; comportement métier inchangé pour les cas historiques.
+
+**Buts :** Noyau réutilisable pour des issues discrètes autres que des chaînes (codages entiers, cellules de tableaux de contingence, etc.) sans perdre le typage statique.
+
+**Impacts :** API source compatible pour les appels existants ; les annotations rappellent que les issues doivent être utilisables comme clés de dictionnaire.
+
+---
+
 ## 2026-03-24 — `SimulationResult` typé (simulation)
 
 **Modifications :** `SimulationResult` est une ``dataclass`` figée avec champs explicites (`trial_outcomes`, `bernoulli_success_total`, `face_counts_sorted`, `urn_successes_per_iteration`, propriété `face_counts`). La propriété `data` conserve les clés historiques (`values`, `successes`, `counts_by_face`, `successes_per_trial`) pour le code existant. Simulateurs Bernoulli, binomiale, dé, urne mis à jour ; tests et exemples documentés.

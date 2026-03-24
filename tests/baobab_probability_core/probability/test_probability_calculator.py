@@ -34,3 +34,9 @@ class TestProbabilityCalculator:
         space = FiniteProbabilitySpace({"x": 1.0})
         calc = ProbabilityCalculator()
         assert calc.simple(space, Event(["x"])) == pytest.approx(1.0)
+
+    def test_union_int_space(self) -> None:
+        """Espace à issues entières : même équation d'union."""
+        space = FiniteProbabilitySpace({10: 0.5, 20: 0.3, 30: 0.2})
+        calc = ProbabilityCalculator()
+        assert calc.union(space, Event([10]), Event([20])) == pytest.approx(0.8)
