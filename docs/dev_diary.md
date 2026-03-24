@@ -4,6 +4,16 @@ Les entrées les plus récentes en premier.
 
 ---
 
+## 2026-03-24 — CI GitHub Actions
+
+**Modifications :** Ajout de `.github/workflows/ci.yml` déclenché sur `push` et `pull_request` : Python 3.11, `pip install -e ".[dev]"`, enchaînement `black --check`, `flake8`, `pylint`, `mypy`, `bandit`, `pytest` (seuil de couverture inchangé, via `pyproject.toml`). Section **Intégration continue** dans `README.md`.
+
+**Buts :** Verrouiller les quality gates sur chaque changement ; alignement avec `docs/00_dev_constraints.md`.
+
+**Impacts :** Les PR sans tests ou sans style conforme seront signalées par un workflow rouge ; pas de changement du code applicatif.
+
+---
+
 ## 2026-03-24 — contraintes de développement en Markdown
 
 **Modifications :** Renommage de `docs/00_dev_constraints.py` en `docs/00_dev_constraints.md` (contenu déjà rédigé en Markdown, sans perte d’information). Ajout d’un court rappel en tête de document ; section journal alignée sur `docs/dev_diary.md` pour ce dépôt. Suppression du fichier `.py` pour éviter toute confusion avec du code exécutable. Mises à jour de `README.md` (structure `docs/`, lien vers les contraintes) et de `docs/01_specifications.md` (référence explicite au fichier de contraintes).
