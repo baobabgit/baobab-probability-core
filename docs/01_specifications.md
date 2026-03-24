@@ -306,7 +306,7 @@ Implémenter une représentation d’un espace probabiliste discret fini.
 
 #### `Event`
 
-Doit représenter un événement discret identifiable.
+Doit représenter un événement discret identifiable ; les issues sont des valeurs **hashables** (souvent ``str``, entiers, tuples, énumérations), pas uniquement des chaînes.
 
 #### `FiniteProbabilitySpace`
 

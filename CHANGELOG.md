@@ -4,6 +4,7 @@
 
 ### Modifié
 
+- **Probabilité** : `Event` et `FiniteProbabilitySpace` sont génériques sur des issues **hashables** (`OutcomeT` borné par `Hashable`) ; les usages existants avec des clés `str` restent valides. `ProbabilityCalculator`, `ConditionalProbabilityCalculator` et `IndependenceChecker` propagent le même paramètre de type.
 - **Simulation** : `SimulationResult` est une `dataclass` typée (tuples entiers, effectifs de dé triés par face) ; la propriété `data` reprend les clés `values`, `successes`, `counts_by_face`, `successes_per_trial`. La construction `SimulationResult(data=...)` n’est plus prise en charge.
 
 ## [1.0.0] — 2026-03-24

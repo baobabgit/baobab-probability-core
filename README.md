@@ -28,6 +28,17 @@ pip install -e ".[dev]"
 
 ## Exemples
 
+### Espace probabiliste fini (issues hashables)
+
+```python
+from baobab_probability_core.probability.finite_probability_space import FiniteProbabilitySpace
+from baobab_probability_core.probability.event import Event
+
+# Issues « classiques » (str) ou tout type hashable : int, tuple, Enum, etc.
+space = FiniteProbabilitySpace({(0, 0): 0.5, (0, 1): 0.2, (1, 0): 0.2, (1, 1): 0.1})
+p = space.probability_of_event(Event([(0, 0), (1, 1)]))
+```
+
 ### Loi binomiale
 
 ```python
