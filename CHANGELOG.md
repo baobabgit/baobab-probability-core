@@ -1,17 +1,12 @@
 # Changelog
 
-## [Non publié]
-
-### Modifié
-
-- **Probabilité** : `Event` et `FiniteProbabilitySpace` sont génériques sur des issues **hashables** (`OutcomeT` borné par `Hashable`) ; les usages existants avec des clés `str` restent valides. `ProbabilityCalculator`, `ConditionalProbabilityCalculator` et `IndependenceChecker` propagent le même paramètre de type.
-- **Simulation** : `SimulationResult` est une `dataclass` typée (tuples entiers, effectifs de dé triés par face) ; la propriété `data` reprend les clés `values`, `successes`, `counts_by_face`, `successes_per_trial`. La construction `SimulationResult(data=...)` n’est plus prise en charge.
-
 ## [1.0.0] — 2026-03-24
 
 ### Modifié
 
 - Métadonnées de packaging : classifier PyPI `Development Status :: 5 - Production/Stable`, URL `Homepage` pointant vers `baobabgit/baobab-probability-core`.
+- **Simulation** : `SimulationResult` est une `dataclass` typée (champs explicites, propriété `face_counts`) ; la propriété `data` reprend en lecture seule les clés `values`, `successes`, `counts_by_face`, `successes_per_trial`. La construction `SimulationResult(data=...)` n’est plus prise en charge.
+- **Probabilité** : `Event` et `FiniteProbabilitySpace` sont génériques sur des issues **hashables** (`OutcomeT` borné par `Hashable`) ; `ProbabilityCalculator`, `ConditionalProbabilityCalculator` et `IndependenceChecker` propagent le même paramètre de type. Export public de `OutcomeT`.
 
 ### Ajouté
 
@@ -23,4 +18,4 @@
 - Statistiques empiriques : `DistributionObservation`, fréquences, moments, descriptifs.
 - Comparaison : `ProbabilityComparisonResult`, `DistributionComparisonResult`, `TheoreticalObservationComparator`, `GoodnessOfFitCalculator` (χ² de Pearson, distance en variation totale).
 - Exceptions métier hiérarchisées sous `BaobabProbabilityCoreException`.
-- Configuration centralisée dans `pyproject.toml`, tests avec couverture ≥ 90 %, rapports HTML/XML sous `docs/tests/coverage/`.
+- Configuration centralisée dans `pyproject.toml` (dont **flake8** via **Flake8-pyproject**), tests avec couverture ≥ 90 %, rapports HTML/XML sous `docs/tests/coverage/`.

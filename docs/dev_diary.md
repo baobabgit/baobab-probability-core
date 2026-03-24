@@ -4,6 +4,16 @@ Les entrées les plus récentes en premier.
 
 ---
 
+## 2026-03-24 — release GitHub **v1.0.0**
+
+**Modifications :** Regroupement dans `CHANGELOG.md` des entrées auparavant sous « Non publié » (simulation typée, espaces finis génériques) dans la section **[1.0.0]** pour cohérence avec le tag. Ajout de `docs/releases/v1.0.0.md` (notes de release destinées à GitHub). Lien **Releases** dans `README.md`. Aucun changement de code métier.
+
+**Buts :** Publier une release GitHub `v1.0.0` alignée sur `pyproject.toml` / `__version__` et sur un journal de changements unique ; équipe et lecteurs externes disposent d’un point d’ancrage SemVer.
+
+**Impacts :** Après merge sur `main`, création du tag annoté `v1.0.0` et publication de la release via l’API GitHub ; la CI tag-déclenchée peut valider le tag une fois poussé.
+
+---
+
 ## 2026-03-24 — espaces finis génériques (`FiniteProbabilitySpace`, `Event`)
 
 **Modifications :** Introduction de `OutcomeT` (:class:`typing.TypeVar`, borne :class:`collections.abc.Hashable`). `Event` et `FiniteProbabilitySpace` deviennent ``Generic[OutcomeT]`` ; stockage interne ``dict[OutcomeT, float]``. Les services `ProbabilityCalculator`, `ConditionalProbabilityCalculator` et `IndependenceChecker` annotent espace et événements avec le même `OutcomeT`. Export de `OutcomeT` depuis `baobab_probability_core.probability`. Tests : `str`, `int`, `tuple`, `Enum` ; comportement métier inchangé pour les cas historiques.
