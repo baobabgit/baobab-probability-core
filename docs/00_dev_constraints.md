@@ -2,6 +2,8 @@
 
 Ce document définit les contraintes et bonnes pratiques à respecter pour le développement de vos projets Python.
 
+Il est rédigé en **Markdown** (`docs/00_dev_constraints.md`) et ne constitue pas du code source Python.
+
 ## Table des matières
 
 1. [Structure du projet](#structure-du-projet)
@@ -261,9 +263,11 @@ class DataProcessor:
 
 ## Journal de développement
 
-### Fichier 02_dev_diary.md
+### Emplacement du fichier
 
-- Le journal de développement doit être tenu dans `docs/02_dev_diary.md`
+- Pour ce dépôt (**baobab-probability-core**), le journal est `docs/dev_diary.md`.
+- Dans d’autres projets du même gabarit, un nom du type `docs/02_dev_diary.md` peut être utilisé ; l’important est de centraliser le journal sous `docs/`.
+
 - **Format des logs** : Classés par **date et heure décroissantes** (les plus récents en premier)
 
 ### Contenu de chaque log

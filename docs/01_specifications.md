@@ -80,7 +80,7 @@ La librairie s’adresse à :
 
 ## 6. Contraintes générales de développement
 
-Le développement doit respecter strictement les contraintes suivantes :
+Le développement doit respecter strictement les contraintes suivantes (référence détaillée : `docs/00_dev_constraints.md`) :
 
 ### 6.1 Structure du projet
 

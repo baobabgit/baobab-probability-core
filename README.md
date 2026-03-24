@@ -81,8 +81,9 @@ src/baobab_probability_core/
 └── validators/         # Validation des entrées
 tests/baobab_probability_core/   # Tests miroir (une classe → un module de tests)
 docs/
-├── dev_diary.md        # Journal de développement
-└── tests/coverage/     # Rapports de couverture (générés)
+├── 00_dev_constraints.md  # Contraintes de développement (Markdown)
+├── dev_diary.md             # Journal de développement
+└── tests/coverage/          # Rapports de couverture (générés)
 ```
 
 ## Qualité
@@ -102,6 +103,7 @@ Couverture minimale attendue : **90 %** (voir `pyproject.toml`).
 
 - Respecter **PEP 8**, typage strict, **une classe par fichier** côté production.
 - Docstrings publiques en **reStructuredText**.
+- Suivre les contraintes de développement décrites dans [`docs/00_dev_constraints.md`](docs/00_dev_constraints.md).
 - Ajouter ou mettre à jour les tests et une entrée dans `docs/dev_diary.md`.
 
 ## Version

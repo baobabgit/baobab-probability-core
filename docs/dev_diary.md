@@ -4,6 +4,16 @@ Les entrées les plus récentes en premier.
 
 ---
 
+## 2026-03-24 — contraintes de développement en Markdown
+
+**Modifications :** Renommage de `docs/00_dev_constraints.py` en `docs/00_dev_constraints.md` (contenu déjà rédigé en Markdown, sans perte d’information). Ajout d’un court rappel en tête de document ; section journal alignée sur `docs/dev_diary.md` pour ce dépôt. Suppression du fichier `.py` pour éviter toute confusion avec du code exécutable. Mises à jour de `README.md` (structure `docs/`, lien vers les contraintes) et de `docs/01_specifications.md` (référence explicite au fichier de contraintes).
+
+**Buts :** Documentation cohérente avec les conventions du dépôt ; aucune dépendance d’outil sur un faux module Python.
+
+**Impacts :** Les contributeurs lisent les contraintes dans un vrai fichier Markdown ; les ancres et le sommaire restent valides.
+
+---
+
 ## 2026-03-24 — alignement métadonnées release stable
 
 **Modifications :** `pyproject.toml` : classifier `Development Status :: 5 - Production/Stable` (remplace la bêta), `project.urls.Homepage` → `https://github.com/baobabgit/baobab-probability-core`. `README.md` (section Version : statut stable + lien dépôt), `CHANGELOG.md` (sous-section *Modifié* pour la version 1.0.0).
