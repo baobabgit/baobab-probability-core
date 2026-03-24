@@ -49,12 +49,12 @@ Enchaînement **black → flake8 → pylint → mypy → bandit → pytest** apr
 - **Déclencheurs** : **`push`** et **`pull_request`**.
 - **Job** : `quality` sur `ubuntu-latest`, Python **3.11**, mêmes étapes que le tableau ci-dessus. Une couverture **strictement inférieure au seuil 90 %** ou un test en échec fait échouer le job (`pytest` + `pyproject.toml`).
 
-**Référence de run CI (branche `main`, succès, merge intégrant la CI sur PR)** :
+**Référence de run CI (branche `main`, dernier succès vérifié au moment de la mise à jour)** :
 
-- Run ID : **23508029730**
-- URL : https://github.com/baobabgit/baobab-probability-core/actions/runs/23508029730
+- Run ID : **23508172802**
+- URL : https://github.com/baobabgit/baobab-probability-core/actions/runs/23508172802
 
-**Référence historique (tag `v1.0.0`, ancien modèle de déclenchement)** :
+**Référence archivée (CI déclenchée uniquement par tags sur l’historique ; sans tag actif sur le dépôt aujourd’hui)** :
 
 - Run ID : **23507200123**
 - URL : https://github.com/baobabgit/baobab-probability-core/actions/runs/23507200123
