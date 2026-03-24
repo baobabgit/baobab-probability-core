@@ -4,7 +4,9 @@
 
 ### Modifié
 
-- Métadonnées de packaging : classifier PyPI `Development Status :: 5 - Production/Stable`, URL `Homepage` pointant vers `baobabgit/baobab-probability-core`.
+- Métadonnées de packaging : classifier PyPI `Development Status :: 5 - Production/Stable`, URLs `Homepage`, `Repository` et `Changelog` dans `pyproject.toml`.
+- **Intégration continue** : workflow GitHub Actions **CI** sur `push` et `pull_request` (black, flake8, pylint, mypy, bandit, pytest ; seuil de couverture **90 %**).
+- **Documentation** : `docs/release_validation.md` (preuve des quality gates), badge CI dans le `README.md`.
 - **Simulation** : `SimulationResult` est une `dataclass` typée (champs explicites, propriété `face_counts`) ; la propriété `data` reprend en lecture seule les clés `values`, `successes`, `counts_by_face`, `successes_per_trial`. La construction `SimulationResult(data=...)` n’est plus prise en charge.
 - **Probabilité** : `Event` et `FiniteProbabilitySpace` sont génériques sur des issues **hashables** (`OutcomeT` borné par `Hashable`) ; `ProbabilityCalculator`, `ConditionalProbabilityCalculator` et `IndependenceChecker` propagent le même paramètre de type. Export public de `OutcomeT`.
 
