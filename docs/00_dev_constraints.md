@@ -176,7 +176,7 @@ Tous les outils de qualité et de développement doivent avoir leur configuratio
 - **black** : Configuration du formatage (longueur de ligne, guillemets, etc.)
 - **pylint** : Règles de linting, fichiers à ignorer, scores minimaux
 - **mypy** : Configuration de la vérification de types, options strictes
-- **flake8** : Règles de style, longueur de ligne, codes d'erreur à ignorer
+- **flake8** : Règles de style, longueur de ligne, codes d'erreur à ignorer. L’outil officiel ne lit pas `pyproject.toml` ; le projet utilise le plugin **Flake8-pyproject** (dépendance de développement) pour charger la section **`[tool.flake8]`** sans fichier `.flake8` séparé.
 - **bandit** : Niveaux de sécurité, tests à exécuter
 - **pytest** : Configuration des tests, plugins, options d'exécution
 - **coverage** : Configuration de la couverture de code, seuils minimaux

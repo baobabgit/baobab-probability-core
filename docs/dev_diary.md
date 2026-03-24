@@ -4,6 +4,16 @@ Les entrées les plus récentes en premier.
 
 ---
 
+## 2026-03-24 — flake8 dans pyproject.toml
+
+**Modifications :** Configuration flake8 déplacée de `.flake8` vers `[tool.flake8]` dans `pyproject.toml`, avec ajout de la dépendance de développement **Flake8-pyproject** (plugin officiellement utilisé pour lire `pyproject.toml`, car flake8 seul ne le supporte pas). Documentation dans `docs/00_dev_constraints.md` et `README.md`.
+
+**Buts :** Centraliser l’outillage comme prévu par les contraintes du projet, sans changer le comportement du linter.
+
+**Impacts :** `pip install -e ".[dev]"` installe le plugin ; commandes `flake8 src tests` et CI inchangées côté invocation.
+
+---
+
 ## 2026-03-24 — CI déclenchée par tags uniquement
 
 **Modifications :** `.github/workflows/ci.yml` : déclencheur `push` limité aux **tags** (plus de `pull_request`). Mise à jour de la section **Intégration continue** dans `README.md`.
