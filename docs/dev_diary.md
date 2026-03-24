@@ -4,6 +4,16 @@ Les entrées les plus récentes en premier.
 
 ---
 
+## 2026-03-24 — preuve de validation technique (`docs/release_validation.md`)
+
+**Modifications :** Ajout de `docs/release_validation.md` : tableau des quality gates (black, flake8, pylint, mypy, bandit, pytest / couverture ≥ 90 %), référence au workflow [`.github/workflows/ci.yml`](../.github/workflows/ci.yml), run CI réussi sur tag `v1.0.0`, et compte-rendu d’une exécution locale. Badge **CI** en tête du `README.md`, lien vers ce document depuis la section Qualité, arborescence `docs/` mise à jour.
+
+**Buts :** Démontrer clairement avant GO release que les exigences de `docs/00_dev_constraints.md` sont vérifiables et vérifiées ; alignement documentaire avec la CI déclenchée par les tags.
+
+**Impacts :** Aucun changement de code métier ; les contributeurs ont en un seul endroit la liste des commandes et le lien vers la preuve CI.
+
+---
+
 ## 2026-03-24 — release GitHub **v1.0.0**
 
 **Modifications :** Regroupement dans `CHANGELOG.md` des entrées auparavant sous « Non publié » (simulation typée, espaces finis génériques) dans la section **[1.0.0]** pour cohérence avec le tag. Ajout de `docs/releases/v1.0.0.md` (notes de release destinées à GitHub). Lien **Releases** dans `README.md`. Aucun changement de code métier.
