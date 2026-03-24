@@ -13,5 +13,7 @@ class TestBernoulliSimulator:
         b = BernoulliSimulator(SimulationConfig(100, 99))
         ra = a.run(0.5)
         rb = b.run(0.5)
-        assert ra.data["values"] == rb.data["values"]
-        assert ra.data["successes"] == sum(ra.data["values"])
+        assert ra.trial_outcomes == rb.trial_outcomes
+        assert list(ra.trial_outcomes or ()) == ra.data["values"]
+        assert ra.bernoulli_success_total == rb.bernoulli_success_total
+        assert ra.bernoulli_success_total == sum(ra.trial_outcomes or ())

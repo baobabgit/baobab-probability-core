@@ -16,7 +16,8 @@ class TestDiceRollSimulator:
         """Somme des comptages = itérations."""
         sim = DiceRollSimulator(SimulationConfig(600, 1))
         r = sim.run(6)
-        assert sum(r.data["counts_by_face"].values()) == 600
+        assert sum(r.face_counts.values()) == 600
+        assert r.face_counts_sorted == tuple(sorted(r.data["counts_by_face"].items()))
 
     def test_invalid_sides(self) -> None:
         """Moins de 2 faces."""

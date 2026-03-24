@@ -11,4 +11,6 @@ class TestBinomialSimulator:
         """Même graine → même suite."""
         a = BinomialSimulator(SimulationConfig(50, 7))
         b = BinomialSimulator(SimulationConfig(50, 7))
-        assert a.run(10, 0.4).data["values"] == b.run(10, 0.4).data["values"]
+        ra, rb = a.run(10, 0.4), b.run(10, 0.4)
+        assert ra.trial_outcomes == rb.trial_outcomes
+        assert list(ra.trial_outcomes or ()) == ra.data["values"]

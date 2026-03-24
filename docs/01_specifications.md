@@ -405,7 +405,7 @@ Encapsule le générateur aléatoire standard Python afin de garantir :
 
 #### `SimulationResult`
 
-Doit encapsuler les résultats d’une simulation.
+Doit encapsuler les résultats d’une simulation sous forme typée (champs explicites selon l’expérience), avec une vue dictionnaire optionnelle compatible avec les versions précédentes pour les mêmes clés métier.
 
 ### Simulations à implémenter
 
