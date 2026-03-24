@@ -2,6 +2,10 @@
 
 ## [1.0.0] — 2026-03-24
 
+### Modifié
+
+- Métadonnées de packaging : classifier PyPI `Development Status :: 5 - Production/Stable`, URL `Homepage` pointant vers `baobabgit/baobab-probability-core`.
+
 ### Ajouté
 
 - Première version publiable du noyau `baobab-probability-core`.

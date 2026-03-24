@@ -106,7 +106,9 @@ Couverture minimale attendue : **90 %** (voir `pyproject.toml`).
 
 ## Version
 
-Version actuelle : **1.0.0** (voir `pyproject.toml`), versioning **SemVer**, tags de release `vMAJOR.MINOR.PATCH`.
+Version actuelle : **1.0.0** (voir `pyproject.toml`), **statut stable** (classifier PyPI `Production/Stable`), versioning **SemVer**, tags de release `vMAJOR.MINOR.PATCH`.
+
+Dépôt : [github.com/baobabgit/baobab-probability-core](https://github.com/baobabgit/baobab-probability-core).
 
 ## Licence
 
