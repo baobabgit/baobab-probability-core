@@ -65,7 +65,26 @@ class TheoreticalObservationComparator:
         theoretical_probabilities: dict[str, float],
         observation: DistributionObservation,
     ) -> DistributionComparisonResult:
-        """Écarts par modalité entre ``p_k`` et ``f_k`` empiriques."""
+        """Écarts par modalité entre ``p_k`` théoriques et ``f_k`` empiriques.
+
+        **Préconditions** : ``theoretical_probabilities`` doit être une distribution
+        de probabilité valide (non vide, masses finies dans ``[0, 1]``, somme 1 à
+        tolérance près). Les clés doivent coïncider exactement avec celles de
+        ``observation``.
+
+        **Cas rejetés** : distribution théorique invalide ; discordance de modalités.
+
+        :param theoretical_probabilities: ``p_k`` par modalité.
+        :param observation: Effectifs observés par modalité.
+        :returns: Écarts absolus et agrégats.
+        :raises InvalidProbabilityValueException: si la distribution théorique est
+            invalide.
+        :raises InvalidSampleException: si les ensembles de modalités diffèrent.
+        """
+        self._prob_val.validate_discrete_probability_distribution(
+            theoretical_probabilities,
+            name="La distribution théorique",
+        )
         obs_freq: dict[str, float] = self._frequency.relative_frequencies(observation.counts)
         keys_obs: set[str] = set(observation.counts.keys())
         keys_theo: set[str] = set(theoretical_probabilities.keys())
