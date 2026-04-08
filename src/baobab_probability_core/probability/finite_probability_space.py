@@ -8,7 +8,7 @@ from baobab_probability_core.exceptions.invalid_probability_value_exception impo
     InvalidProbabilityValueException,
 )
 from baobab_probability_core.probability.event import Event, OutcomeT
-from baobab_probability_core.utils.floating_point_comparator import FloatingPointComparator
+from baobab_probability_core.validators.probability_validator import ProbabilityValidator
 
 
 class FiniteProbabilitySpace(Generic[OutcomeT]):
@@ -24,24 +24,15 @@ class FiniteProbabilitySpace(Generic[OutcomeT]):
         :param outcome_probabilities: Issue → probabilité. Clés hashables
             (ex. ``str``, ``int``, ``tuple``, :class:`enum.Enum`).
         :param tolerance: Tolérance sur la somme ; défaut : constante globale.
-        :raises InvalidProbabilityValueException: si somme ≠ 1 ou probabilités invalides.
+        :raises InvalidProbabilityValueException: si l'univers est vide, si une
+            probabilité est non finie ou hors ``[0, 1]``, ou si la somme ≠ 1 à
+            tolérance près.
         """
-        if len(outcome_probabilities) == 0:
-            raise InvalidProbabilityValueException("L'univers ne doit pas être vide.")
-        probs: list[float] = []
-        for outcome, p in outcome_probabilities.items():
-            if p < 0.0 or p > 1.0:
-                raise InvalidProbabilityValueException(
-                    f"Probabilité hors [0,1] pour l'issue {outcome!r}: {p}."
-                )
-            probs.append(p)
-        self._comparator: FloatingPointComparator = FloatingPointComparator(
-            tolerance if tolerance is not None else DEFAULT_FLOAT_TOLERANCE
+        tol: float = DEFAULT_FLOAT_TOLERANCE if tolerance is None else tolerance
+        ProbabilityValidator(tol).validate_discrete_probability_distribution(
+            outcome_probabilities,
+            name="L'univers probabiliste",
         )
-        if not self._comparator.sum_is_one(probs):
-            raise InvalidProbabilityValueException(
-                f"La somme des probabilités doit valoir 1 (somme = {sum(probs)})."
-            )
         self._outcomes: dict[OutcomeT, float] = dict(outcome_probabilities)
 
     def probability_of_outcome(self, outcome: OutcomeT) -> float:
