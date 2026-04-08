@@ -4,6 +4,22 @@ Les entrées les plus récentes en premier.
 
 ---
 
+## 2026-04-09 18:30:00
+
+### Modifications
+- `ProbabilityValidator` : constructeur avec tolérance flottante, méthode `validate_discrete_probability_distribution` (non vide, masses finies, `[0, 1]`, somme 1 via `FloatingPointComparator`).
+- `FiniteProbabilitySpace` : délégation à cette validation centralisée (réels non finis explicitement rejetés).
+- `TheoreticalObservationComparator.compare_distributions`, `GoodnessOfFitCalculator.pearson_chi_square_statistic` et `total_variation_distance` : application systématique ; `GoodnessOfFitCalculator` instancie un validateur ; docstrings (préconditions, cas rejetés, `:raises`).
+- Tests dans `test_probability_validator.py`, `test_theoretical_observation_comparator.py`, `test_goodness_of_fit_calculator.py`, `test_finite_probability_space.py`.
+
+### Buts
+- Interdire les pseudo-distributions dans les comparateurs théorie / observation et réutiliser une seule règle métier.
+
+### Impact
+- Toute entrée comparateur exige une vraie loi discrète ; alignement avec `DEFAULT_FLOAT_TOLERANCE` ; moins de duplication entre espace fini et comparateurs.
+
+---
+
 ## 2026-04-09 12:00:00
 
 ### Modifications
