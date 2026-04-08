@@ -4,6 +4,19 @@ Les entrées les plus récentes en premier.
 
 ---
 
+## 2026-04-09 20:00:00
+
+### Modifications
+- `pyproject.toml`, `__version__`, `CHANGELOG.md` **[1.0.1]**, `README.md` : version **1.0.1** ; tag annoté **`v1.0.1`** ; publication PyPI.
+
+### Buts
+- Release patch SemVer après correctifs de validation métier (Bayes, distributions théoriques).
+
+### Impact
+- Installateurs `pip install baobab-probability-core==1.0.1` reçoivent les garde-fous probabilistes ; traçabilité Git via le tag.
+
+---
+
 ## 2026-04-09 18:30:00
 
 ### Modifications

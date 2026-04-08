@@ -133,7 +133,7 @@ Le workflow [`.github/workflows/ci.yml`](.github/workflows/ci.yml) (**CI**) se d
 
 ## Version
 
-Version actuelle : **1.0.0** (voir `pyproject.toml`), **statut stable** (classifier PyPI `Production/Stable`), versioning **SemVer**, tags de release `vMAJOR.MINOR.PATCH`.
+Version actuelle : **1.0.1** (voir `pyproject.toml`), **statut stable** (classifier PyPI `Production/Stable`), versioning **SemVer**, tags de release `vMAJOR.MINOR.PATCH`.
 
 - [Releases GitHub](https://github.com/baobabgit/baobab-probability-core/releases) (notes par version ; voir aussi `CHANGELOG.md`).
 - Dépôt : [github.com/baobabgit/baobab-probability-core](https://github.com/baobabgit/baobab-probability-core).

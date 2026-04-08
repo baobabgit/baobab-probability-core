@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1] — 2026-04-09
+
+### Corrigé
+
+- **Bayes** : `BayesCalculator.posterior` impose des entrées cohérentes (`P(A)` dans `]0, 1]`, `P(A|B)·P(B) ≤ P(A)`) pour garantir un posterior dans `[0, 1]`.
+- **Comparaison** : validation centralisée des distributions discrètes (`ProbabilityValidator.validate_discrete_probability_distribution`) appliquée aux comparateurs théorie / observation et à `FiniteProbabilitySpace` (masses finies, `[0, 1]`, somme 1 à tolérance près).
+
 ## [1.0.0] — 2026-03-24
 
 ### Modifié
