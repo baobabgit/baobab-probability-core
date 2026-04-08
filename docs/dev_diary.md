@@ -4,6 +4,21 @@ Les entrées les plus récentes en premier.
 
 ---
 
+## 2026-04-09 12:00:00
+
+### Modifications
+- `BayesCalculator.posterior` : validation de `P(A)` dans `]0, 1]`, contrôle de cohérence `P(A|B) * P(B) <= P(A)`, docstring reStructuredText (préconditions, cas rejetés, exceptions).
+- `ProbabilityValidator.validate_open_zero_closed_one` pour l’intervalle `]0, 1]`.
+- Tests unitaires dans `test_bayes_calculator.py` et `test_probability_validator.py`.
+
+### Buts
+- Empêcher tout posterior hors `[0, 1]` et rejeter les triplets probabilistiquement incohérents.
+
+### Impact
+- Sortie garantie dans `[0, 1]` lorsque la méthode retourne ; messages d’erreur explicites via `InvalidProbabilityValueException` ; couverture des invariants métier en tests.
+
+---
+
 ## 2026-03-24 — préparation publication **v1.0.0** (tag + release GitHub)
 
 **Modifications :** `CHANGELOG.md` (section **[1.0.0]** : CI `push`/`pull_request`, URLs packaging, `release_validation` / badge). `docs/releases/v1.0.0.md` aligné (qualité + liens CI, suppression de la mention erronée « push de tags uniquement »). Aucun changement de code métier.
