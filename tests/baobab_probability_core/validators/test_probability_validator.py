@@ -9,7 +9,7 @@ from baobab_probability_core.validators.probability_validator import Probability
 
 
 class TestProbabilityValidator:
-    """Intervalle unité."""
+    """Intervalle unité et distribution discrète."""
 
     def test_valid(self) -> None:
         """Accepte [0,1]."""
@@ -40,3 +40,50 @@ class TestProbabilityValidator:
         v = ProbabilityValidator()
         with pytest.raises(InvalidProbabilityValueException):
             v.validate_open_zero_closed_one(1.01)
+
+    def test_discrete_valid_accepted(self) -> None:
+        """Distribution valide acceptée."""
+        v = ProbabilityValidator()
+        v.validate_discrete_probability_distribution({"a": 0.5, "b": 0.5})
+
+    def test_discrete_empty_rejected(self) -> None:
+        """Mapping vide rejeté."""
+        v = ProbabilityValidator()
+        with pytest.raises(InvalidProbabilityValueException):
+            v.validate_discrete_probability_distribution({})
+
+    def test_discrete_negative_rejected(self) -> None:
+        """Probabilité négative rejetée."""
+        v = ProbabilityValidator()
+        with pytest.raises(InvalidProbabilityValueException):
+            v.validate_discrete_probability_distribution({"a": -0.1, "b": 1.1})
+
+    def test_discrete_above_one_rejected(self) -> None:
+        """Probabilité > 1 rejetée (somme = 1 mais masse invalide)."""
+        v = ProbabilityValidator()
+        with pytest.raises(InvalidProbabilityValueException):
+            v.validate_discrete_probability_distribution({"a": 1.5, "b": -0.5})
+
+    def test_discrete_sum_below_one_rejected(self) -> None:
+        """Somme < 1 rejetée."""
+        v = ProbabilityValidator()
+        with pytest.raises(InvalidProbabilityValueException):
+            v.validate_discrete_probability_distribution({"a": 0.2, "b": 0.3})
+
+    def test_discrete_sum_above_one_rejected(self) -> None:
+        """Somme > 1 rejetée."""
+        v = ProbabilityValidator()
+        with pytest.raises(InvalidProbabilityValueException):
+            v.validate_discrete_probability_distribution({"a": 0.6, "b": 0.6})
+
+    def test_discrete_non_finite_rejected(self) -> None:
+        """Valeur non finie rejetée."""
+        v = ProbabilityValidator()
+        with pytest.raises(InvalidProbabilityValueException):
+            v.validate_discrete_probability_distribution({"a": float("nan"), "b": 1.0})
+
+    def test_discrete_inf_rejected(self) -> None:
+        """Infini rejeté."""
+        v = ProbabilityValidator()
+        with pytest.raises(InvalidProbabilityValueException):
+            v.validate_discrete_probability_distribution({"a": float("inf"), "b": 0.0})

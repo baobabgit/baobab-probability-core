@@ -49,6 +49,11 @@ class TestFiniteProbabilitySpace:
         with pytest.raises(InvalidProbabilityValueException):
             FiniteProbabilitySpace({"a": -0.1, "b": 1.1})
 
+    def test_non_finite_probability(self) -> None:
+        """Probabilité non finie rejetée (validation centralisée)."""
+        with pytest.raises(InvalidProbabilityValueException):
+            FiniteProbabilitySpace({"a": float("nan"), "b": 1.0})
+
     def test_int_outcomes(self) -> None:
         """Univers dont les issues sont des entiers."""
         space = FiniteProbabilitySpace({1: 0.25, 2: 0.25, 3: 0.5})

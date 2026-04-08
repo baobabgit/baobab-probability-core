@@ -53,3 +53,10 @@ class TestTheoreticalObservationComparator:
         obs = DistributionObservation({"a": 10})
         with pytest.raises(InvalidSampleException):
             c.compare_distributions({"a": 0.5, "b": 0.5}, obs)
+
+    def test_compare_distributions_rejects_invalid_theoretical(self) -> None:
+        """Distribution théorique invalide (somme > 1) malgré clés cohérentes."""
+        c = TheoreticalObservationComparator()
+        obs = DistributionObservation({"a": 50, "b": 50})
+        with pytest.raises(InvalidProbabilityValueException):
+            c.compare_distributions({"a": 0.6, "b": 0.6}, obs)
