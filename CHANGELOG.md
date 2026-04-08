@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0] — 2026-04-09
+
+### Modifié
+
+- **Packaging** : licence en expression **SPDX** `MIT` et `license-files = ["LICENSE"]` dans `[project]` (remplace `license = { text = "MIT" }` dépréciée) ; suppression du classifier Trove `License :: OSI Approved :: MIT License` (redondant avec SPDX sur PyPI).
+- **Build** : `setuptools>=77` pour la prise en charge actuelle des métadonnées licence.
+
 ## [1.0.1] — 2026-04-09
 
 ### Corrigé

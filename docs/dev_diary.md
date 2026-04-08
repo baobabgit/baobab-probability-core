@@ -4,6 +4,20 @@ Les entrées les plus récentes en premier.
 
 ---
 
+## 2026-04-09 21:00:00
+
+### Modifications
+- `pyproject.toml` : `license = "MIT"` (SPDX), `license-files = ["LICENSE"]` dans `[project]`, retrait du classifier `License :: OSI Approved :: MIT License`, `setuptools>=77` ; version **1.1.0**.
+- `__version__`, `CHANGELOG.md` **[1.1.0]**, `README.md` (section Version).
+
+### Buts
+- Alignement sur les recommandations packaging (SPDX, fin des avertissements setuptools sur `project.license` / classifiers de licence).
+
+### Impact
+- Métadonnées PyPI plus claires ; builds futurs sans dépréciations liées à la forme table de `license`.
+
+---
+
 ## 2026-04-09 20:00:00
 
 ### Modifications
